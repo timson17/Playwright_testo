@@ -1,45 +1,53 @@
 from playwright.sync_api import Page
+
 import config
 
-
 class IndexPage:
-    LOGIN_INPUT = "//input[@id='login']"
-    PASSWORD_INPUT = "//input[@id='password']"
-    ENTRY_BUTTON = "//button[@type='submit']"
-    NOTICE_BAD_DATA = "//div[@class='notice__descr']"
-    SERVICE_PROVIDER_LINK = "//a[contains(text(),'Поставщикам услуг')]"
-    REGISTRATION_BUTTON = "//button[@type='button']"
-    REGISTRATION_FORM_CHECK = "//label[@for='registration-surname']"
 
     def open_index_page(self, page: Page) -> None:
         page.goto(config.url.DOMAIN)
 
     def insert_login(self, page: Page) -> None:
-        page.locator(self.LOGIN_INPUT).fill("89373176733")
+        page.locator(config.locators.LOGIN_INPUT).fill("89373176733")
 
     def insert_password(self, page: Page) -> None:
-        page.locator(self.PASSWORD_INPUT).fill("12345678")
-
-    def button_click(self, page: Page) -> None:
-        page.locator(self.ENTRY_BUTTON).click()
-
-    def check_by_title(self,page: Page) -> None:
-        return page.title()
+        page.locator(config.locators.PASSWORD_INPUT).fill("12345678")
 
     def insert_incorrect_login(self, page: Page) -> None:
-        page.locator(self.LOGIN_INPUT).fill("32748932489")
+        page.locator(config.locators.LOGIN_INPUT).fill("32748932489")
 
     def insert_incorrect_password(self, page: Page) -> None:
-        page.locator(self.PASSWORD_INPUT).fill("3724672384")
+        page.locator(config.locators.PASSWORD_INPUT).fill("3724672384")
+
+    def button_click(self, page: Page) -> None:
+        page.locator(config.locators.ENTRY_BUTTON).click()
+
+    def wait_for_visible_servise_providers(self, page: Page) -> None:
+        page.locator(config.locators.YAKOR_FOR_CHECK_SERVICE_PROVIDERS).wait_for(state="visible")
+        return page.title()
+
+    def wait_for_visible_after_logon(self, page: Page) -> None:
+        page.locator(config.locators.YAKOR_FOR_CHECK_LOGON).wait_for(state="visible")
+        return page.title()
+
+    def wait_for_uncorrect_data(self, page: Page) -> None:
+        page.locator(config.locators.NOTICE_BAD_DATA).wait_for(state="visible")
+
+    def wait_for_registration_form(self,page):
+        page.locator(config.locators.YAKOR_FOR_REGISTRATION_FORM).wait_for(state="visible")
 
     def check_notice_uncorrect_data(self, page: Page) -> None:
-        return page.locator(self.NOTICE_BAD_DATA).inner_text()
-
-    def link_service_provider_click(self, page: Page) -> None:
-        page.locator(self.SERVICE_PROVIDER_LINK).click()
-
-    def reg_button_click(self, page: Page) -> None:
-        page.locator(self.REGISTRATION_BUTTON).click()
+        return page.locator(config.locators.NOTICE_BAD_DATA).inner_text()
 
     def check_registration_form(self, page: Page) -> None:
-        return page.locator(self.REGISTRATION_FORM_CHECK).inner_text()
+        return page.locator(config.locators.REGISTRATION_FORM_CHECK).inner_text()
+
+    def link_service_provider_click(self, page: Page) -> None:
+        page.locator(config.locators.SERVICE_PROVIDER_LINK).click()
+
+    def reg_button_click(self, page: Page) -> None:
+        page.locator(config.locators.REGISTRATION_BUTTON).click()
+
+
+
+
