@@ -1,4 +1,6 @@
 #from playwright.sync_api import expect
+import time
+
 import pytest
 import pages
 
@@ -27,6 +29,7 @@ class Test_auth_page:
         pages.index_page.open_index_page(page)
         pages.index_page.insert_login(page)
         pages.index_page.button_click(page)
+        #Не могу найти за что зацепится
 
     def test_registration(self, page):
         pages.index_page.open_index_page(page)
@@ -41,5 +44,26 @@ class Test_auth_page:
         pages.index_page.wait_for_visible_servise_providers(page)
         actual_result = pages.index_page.wait_for_visible_servise_providers(page)
         assert actual_result == "Авторизация | CRM"
+
+    def test_remind_password_link(self, page):
+        pages.index_page.open_index_page(page)
+        pages.index_page.registration_link_click(page)
+        pages.index_page.wait_for_remind_password_form(page)
+        actual_result = pages.index_page.check_remind_password_form(page)
+        assert actual_result == "Восстановление пароля"
+    #переключится на открытую вкладку, заменить хпатх на нужный
+    def test_link_app_store(self, page):
+        pages.index_page.open_index_page(page)
+        pages.index_page.link_app_store_click(page)
+        
+        pages.index_page.check_redirect_appstore(page)
+
+    
+
+
+
+
+
+
 
 

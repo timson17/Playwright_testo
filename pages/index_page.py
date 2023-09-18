@@ -1,6 +1,6 @@
 from playwright.sync_api import Page
-
 import config
+
 
 class IndexPage:
 
@@ -36,18 +36,37 @@ class IndexPage:
     def wait_for_registration_form(self,page):
         page.locator(config.locators.YAKOR_FOR_REGISTRATION_FORM).wait_for(state="visible")
 
+    def wait_for_remind_password_form(self,page):
+        page.locator(config.locators.REMIND_PASSWORD_AUTH_TITLE).wait_for(state="visible")
+
+    def wait_for_redirect_app_store(self,page):
+        page.locator(config.locators.YAKOR_FOR_CHECK_APP_STORE_REDIRECT).wait_for(state="visible")
+        return page.title()
+
     def check_notice_uncorrect_data(self, page: Page) -> None:
         return page.locator(config.locators.NOTICE_BAD_DATA).inner_text()
 
     def check_registration_form(self, page: Page) -> None:
         return page.locator(config.locators.REGISTRATION_FORM_CHECK).inner_text()
 
+    #Не знаю за что зацепится
+    def check_popup_auth_form(self,page: Page) -> None:
+        return page.locator(config.locators.LOGIN_FORM).inner_text()
+
+    def check_remind_password_form(self,page: Page) -> None:
+        return page.locator(config.locators.REMIND_PASSWORD_AUTH_TITLE).inner_text()
+
+    def check_redirect_appstore(self, page: Page) -> None:
+        page.locator(config.locators.YAKOR_FOR_CHECK_REDIRECT_APPSTORE).wait_for(state="visible")
+
     def link_service_provider_click(self, page: Page) -> None:
         page.locator(config.locators.SERVICE_PROVIDER_LINK).click()
+
+    def registration_link_click(self, page: Page) -> None:
+        page.locator(config.locators.REMIND_PASSWORD_LINK).click()
 
     def reg_button_click(self, page: Page) -> None:
         page.locator(config.locators.REGISTRATION_BUTTON).click()
 
-
-
-
+    def link_app_store_click(self, page: Page) -> None:
+        page.locator(config.locators.APP_STORE_LINK).click()

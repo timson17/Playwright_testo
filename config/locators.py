@@ -6,7 +6,12 @@ class LOCATORS:
     SERVICE_PROVIDER_LINK = "//a[contains(text(),'Поставщикам услуг')]"
     REGISTRATION_BUTTON = "//button[@type='button']"
     REGISTRATION_FORM_CHECK = "//label[@for='registration-surname']"
+    REMIND_PASSWORD_LINK = "//a[@class='link link-reset']"
+    REMIND_PASSWORD_AUTH_TITLE = "//h2[@class='auth__title']"
+    LOGIN_FORM = "//div[@class='auth-modal']"
+    APP_STORE_LINK = "//div[@class='auth-overlay']//li[1]//a[1]//img[1]"
     YAKOR_FOR_CHECK_LOGON = "//button[@class='button main-content-navbar__button']"
     YAKOR_FOR_CHECK_SERVICE_PROVIDERS = "//div[@class='logging__form-wrap']"
     YAKOR_FOR_REGISTRATION_FORM = "//div[@class='auth-modal']"
+    YAKOR_FOR_CHECK_REDIRECT_APPSTORE = "//h2[@class='auth__title']"
 
