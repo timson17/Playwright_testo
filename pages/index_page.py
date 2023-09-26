@@ -8,16 +8,16 @@ class IndexPage:
         page.goto(config.url.DOMAIN)
 
     def insert_login(self, page: Page) -> None:
-        page.locator(config.locators.LOGIN_INPUT).fill("89373176733")
+        page.locator(config.locators.LOGIN_INPUT).fill("enter test login")
 
     def insert_password(self, page: Page) -> None:
-        page.locator(config.locators.PASSWORD_INPUT).fill("12345678")
+        page.locator(config.locators.PASSWORD_INPUT).fill("enter test password")
 
     def insert_incorrect_login(self, page: Page) -> None:
-        page.locator(config.locators.LOGIN_INPUT).fill("32748932489")
+        page.locator(config.locators.LOGIN_INPUT).fill("enter negative test login")
 
     def insert_incorrect_password(self, page):
-        page.locator(config.locators.PASSWORD_INPUT).fill("3724672384")
+        page.locator(config.locators.PASSWORD_INPUT).fill("enter negative test password")
 
     def button_click(self, page):
         page.locator(config.locators.ENTRY_BUTTON).click()
@@ -97,13 +97,13 @@ class IndexPage:
         page.get_by_text("Заполните это поле.")
 
     def full_check_registration_form(self, page):
-        page.locator(config.locators.REGISTRATION_LAST_NAME).fill("buba")
-        page.locator(config.locators.REGISTRATION_FIRST_NAME).fill("buba")
-        page.locator(config.locators.REGISTRATION_OTCHSTVO).fill("buba")
-        page.locator(config.locators.REGISTRATION_PHONE_NUMBER).fill("89275643849")
-        page.locator(config.locators.REGISTRATION_EMAIL).fill("salut2005@buba.ru")
-        page.locator(config.locators.REGISTRATION_PASSWORD).fill("12345678")
-        page.locator(config.locators.REGISTRATION_PASSWORD_SECOND).fill("12345678")
+        page.locator(config.locators.REGISTRATION_LAST_NAME).fill("enter test enter last name")
+        page.locator(config.locators.REGISTRATION_FIRST_NAME).fill("enter test first name")
+        page.locator(config.locators.REGISTRATION_OTCHSTVO).fill("enter test otchestvo")
+        page.locator(config.locators.REGISTRATION_PHONE_NUMBER).fill("enter test phone")
+        page.locator(config.locators.REGISTRATION_EMAIL).fill("enter test email")
+        page.locator(config.locators.REGISTRATION_PASSWORD).fill("enter test password")
+        page.locator(config.locators.REGISTRATION_PASSWORD_SECOND).fill("enter test password again")
         page.locator("label").filter(has_text="Я принимаю пользовательское соглашение и условия оферты").locator("span").first.click()
         page.locator("label").filter(has_text="Подтверждаю, что я собственник или уполномоченный представитель").locator("span").first.click()
         page.get_by_role("button", name="Зарегистрироваться").click()
