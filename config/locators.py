@@ -4,8 +4,17 @@ class LOCATORS:
     ENTRY_BUTTON = "//button[@type='submit']"
     NOTICE_BAD_DATA = "//div[@class='notice__descr']"
     SERVICE_PROVIDER_LINK = "//a[contains(text(),'Поставщикам услуг')]"
+
     REGISTRATION_BUTTON = "//button[@type='button']"
     REGISTRATION_FORM_CHECK = "//label[@for='registration-surname']"
+    REGISTRATION_LAST_NAME = "//input[@id='registration-surname']"
+    REGISTRATION_FIRST_NAME = "//input[@id='registration-name']"
+    REGISTRATION_OTCHSTVO = "//input[@id='registration-patronymic']"
+    REGISTRATION_PHONE_NUMBER = "//input[@id='registration-number']"
+    REGISTRATION_EMAIL = "//input[@id='registration-email']"
+    REGISTRATION_PASSWORD = "//input[@id='registration-pass']"
+    REGISTRATION_PASSWORD_SECOND = "//input[@id='registration-repeatPass']"
+
     REMIND_PASSWORD_LINK = "//a[@class='link link-reset']"
     REMIND_PASSWORD_AUTH_TITLE = "//h2[@class='auth__title']"
     LOGIN_FORM = "//div[@class='auth-modal']"

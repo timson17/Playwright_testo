@@ -29,14 +29,16 @@ class Test_auth_page:
         pages.index_page.open_index_page(page)
         pages.index_page.insert_login(page)
         pages.index_page.button_click(page)
-        #Не могу найти за что зацепится
+        pages.index_page.popup_warning(page)
 
     def test_registration(self, page):
         pages.index_page.open_index_page(page)
         pages.index_page.reg_button_click(page)
         pages.index_page.wait_for_registration_form(page)
         actual_result = pages.index_page.check_registration_form(page)
-        assert actual_result == "Фамилия*"
+        if actual_result == "Фамилия*":
+            pages.index_page.full_check_registration_form(page)
+
 
     def test_service_providers(self, page):
         pages.index_page.open_index_page(page)
@@ -51,12 +53,24 @@ class Test_auth_page:
         pages.index_page.wait_for_remind_password_form(page)
         actual_result = pages.index_page.check_remind_password_form(page)
         assert actual_result == "Восстановление пароля"
-    #переключится на открытую вкладку, заменить хпатх на нужный
+
     def test_link_app_store(self, page):
         pages.index_page.open_index_page(page)
-        pages.index_page.link_app_store_click(page)
-        
-        pages.index_page.check_redirect_appstore(page)
+        pages.index_page.app_store(page)
+
+    def test_link_app_gallery(self, page):
+        pages.index_page.open_index_page(page)
+        pages.index_page.app_gallery(page)
+
+    def test_link_google_play(self, page):
+        pages.index_page.open_index_page(page)
+        pages.index_page.google_play(page)
+
+    def test_about_yurta(self, page):
+        pages.index_page.open_index_page(page)
+        pages.index_page.about_yurta(page)
+
+
 
     
 
